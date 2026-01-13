@@ -1,0 +1,191 @@
+/* Charts Section Styles */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .charts-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.chart-card {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400%;
+  height: 400%;
+  background:
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.12) 0%, transparent 12%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 12%, transparent 24%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.06) 24%, transparent 36%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.04) 36%, transparent 48%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.03) 48%, transparent 60%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.02) 60%, transparent 72%);
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  animation: concentric-pulse 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+.chart-card:hover {
+  box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.15), 0 0 20px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.chart-card:hover::before {
+  opacity: 1;
+}
+
+.chart-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.chart-container {
+  width: 100%;
+  height: 300px;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
+}
+
+.recharts-tooltip-wrapper {
+  outline: none;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.recharts-default-tooltip {
+  background-color: white !important;
+  border: 1px solid #e5e7eb !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(8px);
+  position: relative;
+  overflow: hidden;
+}
+
+.recharts-default-tooltip::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180%;
+  height: 180%;
+  background:
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0%, transparent 20%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.05) 20%, transparent 40%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.03) 40%, transparent 60%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+  animation: tooltip-concentric 3s ease-in-out infinite;
+}
+
+@keyframes tooltip-concentric {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+
+.recharts-pie-label-text {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Enhanced bar chart styling with radial blur */
+.recharts-bar {
+  filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.2));
+  transition: all 0.3s ease;
+}
+
+.recharts-bar:hover {
+  filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.4));
+}
+
+/* Enhanced pie chart styling */
+.recharts-pie-sector {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+  transition: all 0.3s ease;
+}
+
+.recharts-pie-sector:hover {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+  transform: scale(1.02);
+}
+
+@keyframes concentric-pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.6;
+  }
+}
+
+/* Radial gradient background for chart containers */
+.chart-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250%;
+  height: 250%;
+  background:
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.06) 0%, transparent 15%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.04) 15%, transparent 30%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.03) 30%, transparent 45%),
+    radial-gradient(circle at center, rgba(59, 130, 246, 0.02) 45%, transparent 60%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+  animation: chart-concentric-fade 5s ease-in-out infinite;
+}
+
+.chart-container:hover::before {
+  opacity: 1;
+}
+
+@keyframes chart-concentric-fade {
+  0%, 100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}

@@ -1,0 +1,10 @@
+/* Header specific styles */
+.header-title {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.header-subtitle {
+  font-weight: 300;
+  opacity: 0.9;
+}
