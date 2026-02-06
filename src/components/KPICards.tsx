@@ -24,7 +24,7 @@ const KPICards: React.FC<KPICardsProps> = ({ summary }) => {
       </div>
       <div className="kpi-card bg-white p-6 rounded-lg shadow-md">
         <div className="flex items-center">
-          <DollarSign className="w-8 h-8 text-blue-500 mr-3 kpi-icon" />
+          <p className="w-8 h-8 text-blue-500 mr-3 kpi-icon" >LKR</p>
           <div>
             <p className="text-sm text-gray-600 kpi-label">Total Damages (LKR)</p>
             <p className="text-2xl font-bold text-gray-900 kpi-value">{summary.totalDamages.toLocaleString()}</p>

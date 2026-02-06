@@ -47,7 +47,6 @@ const MOCK_API_RESPONSE = {
   ]
 };
 
-// District risk mapping for map coloring
 const districtRiskMap: { [key: string]: string } = {
   Colombo: 'Critical',
   Gampaha: 'Critical',
@@ -61,7 +60,6 @@ const districtRiskMap: { [key: string]: string } = {
   Anuradhapura: 'Low'
 };
 
-// District centers and radii (in meters) for circular patches
 const districtCircles: { [key: string]: { center: [number, number], radius: number } } = {
   Colombo: { center: [6.9271, 79.8612], radius: 15000 },
   Gampaha: { center: [7.0840, 79.9500], radius: 12000 },
@@ -138,7 +136,6 @@ const DharaDashboard: React.FC = () => {
     { name: 'Low', value: MOCK_API_RESPONSE.detailedData.filter(d => d.risk_level === 'Low').length }
   ];
 
-  // Prepare district data for map
   const districtData = Object.entries(districtCircles).map(([district, { center }]) => {
     const risk = districtRiskMap[district];
     const chartItem = MOCK_API_RESPONSE.chartData.find(d => d.district === district);
@@ -146,27 +143,26 @@ const DharaDashboard: React.FC = () => {
       district,
       riskLevel: risk as 'Low' | 'Medium' | 'High' | 'Critical',
       affectedPopulation: chartItem?.impact || 0,
-      estimatedDamage: (chartItem?.impact || 0) * 20000, // Mock damage calculation
+      estimatedDamage: (chartItem?.impact || 0) * 20000,
       latitude: center[0],
       longitude: center[1]
     };
   });
 
-  // Prepare data for table
   const tableData = MOCK_API_RESPONSE.detailedData.map(item => ({
     district: item.district,
     riskLevel: item.risk_level as 'Low' | 'Medium' | 'High' | 'Critical',
     affectedPopulation: item.families_affected,
-    estimatedDamage: item.families_affected * 20000, // Mock damage calculation
+    estimatedDamage: item.families_affected * 20000,
     infrastructureDamage: item.risk_level === 'Critical' ? 'Severe' : item.risk_level === 'Moderate' ? 'Moderate' : 'Minor',
     evacuationStatus: item.risk_level === 'Critical' ? 'In Progress' : item.risk_level === 'Moderate' ? 'Completed' : 'Not Started'
   }));
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div>
       <Header />
 
-      <div className="max-w-7xl mx-auto p-6">
+      <div className="dashboard-content">
         <div className="space-y-8">
           <UploadSection
             selectedFile={selectedFile}

@@ -1,13 +1,18 @@
 import React from 'react';
+import './Header.css';
 
 interface HeaderProps {}
 
 const Header: React.FC<HeaderProps> = () => {
   return (
-    <header className="bg-blue-950 text-white py-6 px-4">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-bold">Dhara | National Cyclone Impact Analysis System</h1>
-        <p className="text-blue-200 mt-2">Disaster Management Centre</p>
+    <header className="dashboard-header">
+      <div className="header-container">
+        <div className="header-content">
+          <h1 className="header-title">Dhara</h1>
+          <div className="header-divider"></div>
+          <p className="header-subtitle">National Cyclone Impact Analysis System</p>
+        </div>
+        <p className="header-org">Disaster Management Centre</p>
       </div>
     </header>
   );
