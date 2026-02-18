@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, DollarSign, AlertTriangle } from 'lucide-react';
+import { Users, TrendingUp, AlertTriangle } from 'lucide-react';
 import './KPICards.css';
 
 interface KPICardsProps {
@@ -11,35 +11,49 @@ interface KPICardsProps {
 }
 
 const KPICards: React.FC<KPICardsProps> = ({ summary }) => {
+  const cards = [
+    {
+      icon: Users,
+      label: 'Total Families Affected',
+      value: summary.totalFamiliesAffected.toLocaleString(),
+      color: 'blue',
+      trend: '+12.5%',
+    },
+    {
+      icon: TrendingUp,
+      label: 'Total Damages (LKR)',
+      value: summary.totalDamages.toLocaleString(),
+      color: 'violet',
+      trend: null,
+    },
+    {
+      icon: AlertTriangle,
+      label: 'Critical DS Divisions',
+      value: summary.criticalDSDivisions.toString(),
+      color: 'red',
+      trend: null,
+    },
+  ];
+
   return (
-    <div className="kpi-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div className="kpi-card bg-white p-6 rounded-lg shadow-md">
-        <div className="flex items-center">
-          <Users className="w-8 h-8 text-blue-500 mr-3 kpi-icon" />
-          <div>
-            <p className="text-sm text-gray-600 kpi-label">Total Families Affected</p>
-            <p className="text-2xl font-bold text-gray-900 kpi-value">{summary.totalFamiliesAffected.toLocaleString()}</p>
+    <div className="kpi-grid">
+      {cards.map((card, i) => {
+        const Icon = card.icon;
+        return (
+          <div key={i} className={`kpi-card kpi-card--${card.color}`}>
+            <div className="kpi-card-inner">
+              <div className="kpi-icon-wrap">
+                <Icon size={20} strokeWidth={2} />
+              </div>
+              <div className="kpi-info">
+                <p className="kpi-label">{card.label}</p>
+                <p className="kpi-value">{card.value}</p>
+              </div>
+            </div>
+            <div className="kpi-card-glow" />
           </div>
-        </div>
-      </div>
-      <div className="kpi-card bg-white p-6 rounded-lg shadow-md">
-        <div className="flex items-center">
-          <p className="w-8 h-8 text-blue-500 mr-3 kpi-icon" >LKR</p>
-          <div>
-            <p className="text-sm text-gray-600 kpi-label">Total Damages (LKR)</p>
-            <p className="text-2xl font-bold text-gray-900 kpi-value">{summary.totalDamages.toLocaleString()}</p>
-          </div>
-        </div>
-      </div>
-      <div className="kpi-card bg-white p-6 rounded-lg shadow-md">
-        <div className="flex items-center">
-          <AlertTriangle className="w-8 h-8 text-red-600 mr-3 kpi-icon-critical" />
-          <div>
-            <p className="text-sm text-gray-600 kpi-label">Critical DS Divisions</p>
-            <p className="text-2xl font-bold text-red-600 kpi-value-critical">{summary.criticalDSDivisions}</p>
-          </div>
-        </div>
-      </div>
+        );
+      })}
     </div>
   );
 };

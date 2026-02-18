@@ -1,69 +1,155 @@
 .dashboard-header {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  padding: 2rem 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-.dashboard-header::before {
-  content: '';
-  position: absolute;
+  background: rgba(10, 14, 26, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 50%);
-  pointer-events: none;
+  z-index: 100;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.06);
 }
 
 .header-container {
-  max-width: 80rem;
+  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header-content {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.header-logo-section {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header-logo-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+  border-radius: 10px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #60A5FA;
+}
+
+.header-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 1;
 }
 
 .header-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.03em;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   margin: 0;
-}
-
-.header-divider {
-  width: 2px;
-  height: 1.5rem;
-  background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.5), transparent);
-  display: none;
-}
-
-@media (min-width: 768px) {
-  .header-divider {
-    display: block;
-  }
+  background: linear-gradient(135deg, #F1F5F9 0%, #60A5FA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .header-subtitle {
-  font-size: 1.125rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.9);
-  margin: 0;
-  letter-spacing: -0.01em;
-}
-
-.header-org {
-  font-size: 0.875rem;
-  color: rgba(147, 197, 253, 0.9);
+  font-size: 0.6875rem;
+  color: var(--text-tertiary);
   margin: 0;
   font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.header-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.875rem;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #34D399;
+  letter-spacing: 0.01em;
+}
+
+.header-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: #10B981;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+  50% { opacity: 0.7; box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.header-clear-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: 8px;
+  color: #F87171;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-clear-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: translateY(-1px);
+}
+
+.header-btn-icon {
+  font-size: 0.875rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.header-clear-btn:hover .header-btn-icon {
+  transform: rotate(180deg);
+}
+
+.header-gradient-line {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .dashboard-header {
+    padding: 0 1rem;
+    height: 56px;
+  }
+
+  .header-title {
+    font-size: 1rem;
+  }
+
+  .header-badge {
+    display: none;
+  }
 }

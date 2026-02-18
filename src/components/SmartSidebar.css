@@ -1,0 +1,144 @@
+.smart-sidebar {
+  width: 100%;
+  position: sticky;
+  top: 80px;
+}
+
+.sidebar-card {
+  background: rgba(15, 22, 41, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.06);
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.06);
+  margin: 0.875rem 0;
+}
+
+.sidebar-title {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-empty {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: rgba(148, 163, 184, 0.04);
+  text-align: center;
+  border: 1px dashed rgba(148, 163, 184, 0.1);
+}
+
+.sidebar-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.sidebar-option {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.sidebar-option:hover {
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.sidebar-option.active {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.sidebar-option.active .sidebar-label {
+  color: #60A5FA;
+  font-weight: 600;
+}
+
+.sidebar-radio {
+  width: 14px;
+  height: 14px;
+  accent-color: #3B82F6;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sidebar-label {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chart-type-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.chart-btn {
+  padding: 0.625rem;
+  background: rgba(148, 163, 184, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 10px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+}
+
+.chart-btn:hover {
+  background: rgba(59, 130, 246, 0.08);
+  border-color: rgba(59, 130, 246, 0.15);
+  color: var(--text-secondary);
+}
+
+.chart-btn.active {
+  background: rgba(59, 130, 246, 0.12);
+  border-color: rgba(59, 130, 246, 0.3);
+  color: #60A5FA;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.1);
+}
+
+@media (max-width: 640px) {
+  .sidebar-card {
+    padding: 1rem;
+  }
+  
+  .chart-type-buttons {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
