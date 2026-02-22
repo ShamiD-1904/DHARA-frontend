@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import Header from './Header';
-import KPICards from './KPICards';
 import ChartsSection from './ChartsSection';
 import MapSection from './MapSection';
 import DataTable from './DataTable';
@@ -404,7 +403,7 @@ const DharaDashboard: React.FC = () => {
         </div>
 
         {/* KPI Cards */}
-        <KPICards summary={computedSummary} />
+        
 
         {/* Charts */}
         <ChartsSection
